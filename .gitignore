@@ -1,0 +1,13 @@
+# Flutter / Dart build artifacts
+**/build/
+**/.dart_tool/
+**/.flutter-plugins
+**/.flutter-plugins-dependencies
+**/.packages
+**/ephemeral/
+
+# IDE & OS files
+.vscode/
+.idea/
+*.iml
+.DS_Store
