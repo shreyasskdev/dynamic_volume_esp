@@ -24,6 +24,12 @@ Includes a **Flutter Android companion app** that connects over Bluetooth Serial
 
 ---
 
+## Circuit Diagram
+
+![Circuit Diagram](circuit_diagram.svg)
+
+---
+
 ## Wiring & Pinout
 
 ### 1. INMP441 Microphone to ESP32 (`I2S_NUM_1`)

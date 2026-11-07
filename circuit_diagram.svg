@@ -1,0 +1,363 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 660" width="100%" height="100%" style="background:#141720; font-family:'Segoe UI', Roboto, Helvetica, monospace;">
+  <defs>
+    <!-- Drop Shadow for PCBs & Components -->
+    <filter id="shadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#000000" flood-opacity="0.65"/>
+    </filter>
+    <filter id="wire-shadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+
+    <!-- Metallic Gradients -->
+    <linearGradient id="tin-shield" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e6e9ef"/>
+      <stop offset="45%" stop-color="#b8c0cc"/>
+      <stop offset="55%" stop-color="#9aa2af"/>
+      <stop offset="100%" stop-color="#cfd5df"/>
+    </linearGradient>
+    <linearGradient id="cap-body" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1b3b6f"/>
+      <stop offset="40%" stop-color="#275dad"/>
+      <stop offset="75%" stop-color="#122649"/>
+      <stop offset="75.1%" stop-color="#d0d5dd"/>
+      <stop offset="95%" stop-color="#f0f4f8"/>
+      <stop offset="100%" stop-color="#a5aebd"/>
+    </linearGradient>
+    <radialGradient id="speaker-cone" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#1a1a1a"/>
+      <stop offset="25%" stop-color="#383838"/>
+      <stop offset="30%" stop-color="#1f1f1f"/>
+      <stop offset="78%" stop-color="#2c2c2c"/>
+      <stop offset="85%" stop-color="#141414"/>
+      <stop offset="95%" stop-color="#333333"/>
+      <stop offset="100%" stop-color="#111111"/>
+    </radialGradient>
+    <linearGradient id="gold-pad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffe066"/>
+      <stop offset="100%" stop-color="#d4af37"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Title Banner -->
+  <text x="550" y="38" fill="#f8f8f2" font-size="22" font-weight="bold" text-anchor="middle" letter-spacing="0.5">ESP32 Dynamic Volume Adjuster — Hardware Wiring Layout</text>
+  <text x="550" y="60" fill="#8be9fd" font-size="13" text-anchor="middle">INMP441 I2S MEMS Microphone  •  ESP32 DevKit V1  •  1000µF Power Filter  •  PAM8403 3W Amplifier</text>
+
+  <!-- ========================================================= -->
+  <!-- 1. INMP441 MEMS MICROPHONE BREAKOUT (Round Black PCB)     -->
+  <!-- ========================================================= -->
+  <g filter="url(#shadow)" transform="translate(40, 140)">
+    <!-- Round Black PCB -->
+    <circle cx="115" cy="125" r="105" fill="#18191c" stroke="#2e3138" stroke-width="3"/>
+    <circle cx="115" cy="125" r="98" fill="none" stroke="#ffffff" stroke-opacity="0.15" stroke-width="1" stroke-dasharray="6,4"/>
+    
+    <!-- MEMS Sensor Metal Can & Acoustic Port -->
+    <rect x="52" y="95" width="44" height="58" rx="3" fill="url(#tin-shield)" stroke="#666" stroke-width="1.5"/>
+    <circle cx="74" cy="115" r="9" fill="#0d0e11" stroke="url(#gold-pad)" stroke-width="2.5"/>
+    <text x="74" y="143" fill="#333" font-size="8" font-weight="bold" text-anchor="middle">I441</text>
+
+    <!-- SMD Capacitors/Resistors -->
+    <rect x="108" y="98" width="12" height="6" fill="#b58900" stroke="#ccc" stroke-width="1"/>
+    <rect x="108" y="110" width="12" height="6" fill="#222" stroke="#ccc" stroke-width="1"/>
+    <rect x="108" y="122" width="12" height="6" fill="#b58900" stroke="#ccc" stroke-width="1"/>
+
+    <!-- Silkscreen Title -->
+    <text x="90" y="58" fill="#ffffff" font-size="14" font-weight="bold" text-anchor="middle">INMP441</text>
+    <text x="90" y="74" fill="#03dac6" font-size="10" text-anchor="middle">I2S MEMS MIC</text>
+
+    <!-- Gold Solder Pads (Right Edge) -->
+    <g transform="translate(175, 58)">
+      <!-- VDD -->
+      <circle cx="0" cy="0" r="7" fill="url(#gold-pad)"/><circle cx="0" cy="0" r="3" fill="#111"/>
+      <text x="-12" y="4" fill="#ff6b6b" font-size="12" font-weight="bold" text-anchor="end">VDD</text>
+      <!-- GND -->
+      <circle cx="0" cy="26" r="7" fill="url(#gold-pad)"/><circle cx="0" cy="26" r="3" fill="#111"/>
+      <text x="-12" y="30" fill="#cccccc" font-size="12" font-weight="bold" text-anchor="end">GND</text>
+      <!-- SCK -->
+      <circle cx="0" cy="52" r="7" fill="url(#gold-pad)"/><circle cx="0" cy="52" r="3" fill="#111"/>
+      <text x="-12" y="56" fill="#f1fa8c" font-size="12" font-weight="bold" text-anchor="end">SCK</text>
+      <!-- WS -->
+      <circle cx="0" cy="78" r="7" fill="url(#gold-pad)"/><circle cx="0" cy="78" r="3" fill="#111"/>
+      <text x="-12" y="82" fill="#8be9fd" font-size="12" font-weight="bold" text-anchor="end">WS</text>
+      <!-- SD -->
+      <circle cx="0" cy="104" r="7" fill="url(#gold-pad)"/><circle cx="0" cy="104" r="3" fill="#111"/>
+      <text x="-12" y="108" fill="#50fa7b" font-size="12" font-weight="bold" text-anchor="end">SD</text>
+      <!-- L/R -->
+      <circle cx="0" cy="130" r="7" fill="url(#gold-pad)"/><circle cx="0" cy="130" r="3" fill="#111"/>
+      <text x="-12" y="134" fill="#bd93f9" font-size="12" font-weight="bold" text-anchor="end">L/R</text>
+    </g>
+  </g>
+
+  <!-- ========================================================= -->
+  <!-- 2. ESP32 DEVKIT V1 (30-Pin Realistic Board)               -->
+  <!-- ========================================================= -->
+  <g filter="url(#shadow)" transform="translate(360, 95)">
+    <!-- Matte Black PCB Base -->
+    <rect x="0" y="0" width="230" height="450" rx="10" fill="#191b20" stroke="#333842" stroke-width="2.5"/>
+    <!-- Mounting Holes -->
+    <circle cx="14" cy="14" r="5" fill="#141720" stroke="url(#gold-pad)" stroke-width="2"/>
+    <circle cx="216" cy="14" r="5" fill="#141720" stroke="url(#gold-pad)" stroke-width="2"/>
+    <circle cx="14" cy="436" r="5" fill="#141720" stroke="url(#gold-pad)" stroke-width="2"/>
+    <circle cx="216" cy="436" r="5" fill="#141720" stroke="url(#gold-pad)" stroke-width="2"/>
+
+    <!-- PCB Gold Antenna Meander -->
+    <rect x="48" y="8" width="134" height="42" rx="3" fill="#111317"/>
+    <path d="M 62 42 L 62 16 L 76 16 L 76 38 L 90 38 L 90 16 L 104 16 L 104 38 L 118 38 L 118 16 L 132 16 L 132 38 L 146 38 L 146 16 L 168 16" fill="none" stroke="url(#gold-pad)" stroke-width="3" stroke-linecap="square"/>
+
+    <!-- ESP-WROOM-32 Metallic RF Shield -->
+    <rect x="48" y="50" width="134" height="145" rx="4" fill="url(#tin-shield)" stroke="#7a828e" stroke-width="2"/>
+    <rect x="56" y="58" width="118" height="129" fill="none" stroke="#8a929e" stroke-width="1"/>
+    <text x="115" y="110" fill="#2c313a" font-size="13" font-weight="bold" text-anchor="middle">ESP-WROOM-32</text>
+    <text x="115" y="128" fill="#444b58" font-size="10" font-weight="bold" text-anchor="middle">Wi-Fi + BT / BLE</text>
+    <circle cx="68" cy="172" r="4" fill="#9aa2af"/>
+
+    <!-- AMS1117 3.3V Voltage Regulator -->
+    <rect x="65" y="235" width="38" height="24" rx="2" fill="#111" stroke="#444" stroke-width="1"/>
+    <rect x="76" y="227" width="16" height="8" fill="url(#tin-shield)"/>
+    <text x="84" y="251" fill="#888" font-size="7" text-anchor="middle">AMS1117</text>
+
+    <!-- CP2102 USB-to-UART Bridge IC -->
+    <rect x="93" y="305" width="44" height="44" rx="3" fill="#111" stroke="#444" stroke-width="1"/>
+    <circle cx="101" cy="313" r="2" fill="#777"/>
+    <text x="115" y="328" fill="#777" font-size="8" text-anchor="middle">CP2102</text>
+    <text x="115" y="338" fill="#555" font-size="7" text-anchor="middle">UART</text>
+
+    <!-- Onboard LEDs (Power Red & Status Blue) -->
+    <rect x="148" y="242" width="10" height="6" fill="#ff3333" stroke="#fff" stroke-width="0.5"/>
+    <text x="148" y="237" fill="#ff5555" font-size="7">PWR</text>
+
+    <!-- EN and BOOT Tactile Push Buttons -->
+    <rect x="44" y="382" width="30" height="22" rx="2" fill="#dcdcdc" stroke="#666" stroke-width="1"/>
+    <circle cx="59" cy="393" r="6" fill="#1a1a1a"/>
+    <text x="59" y="377" fill="#aaa" font-size="9" font-weight="bold" text-anchor="middle">EN</text>
+
+    <rect x="156" y="382" width="30" height="22" rx="2" fill="#dcdcdc" stroke="#666" stroke-width="1"/>
+    <circle cx="171" cy="393" r="6" fill="#1a1a1a"/>
+    <text x="171" y="377" fill="#aaa" font-size="9" font-weight="bold" text-anchor="middle">BOOT</text>
+
+    <!-- Micro-USB Port (Bottom Center) -->
+    <rect x="85" y="422" width="60" height="36" rx="4" fill="url(#tin-shield)" stroke="#555" stroke-width="2"/>
+    <rect x="95" y="432" width="40" height="10" rx="2" fill="#222"/>
+    <text x="115" y="416" fill="#8be9fd" font-size="10" font-weight="bold" text-anchor="middle">5V USB ONLY</text>
+
+    <!-- Left Header Pins -->
+    <g transform="translate(18, 103)">
+      <!-- 3V3 -->
+      <rect x="-7" y="-7" width="14" height="14" rx="2" fill="url(#gold-pad)"/><circle cx="0" cy="0" r="3" fill="#111"/>
+      <text x="14" y="4" fill="#ff6b6b" font-size="12" font-weight="bold">3V3</text>
+      <!-- GND -->
+      <rect x="-7" y="19" width="14" height="14" rx="2" fill="url(#gold-pad)"/><circle cx="0" cy="26" r="3" fill="#111"/>
+      <text x="14" y="30" fill="#cccccc" font-size="12" font-weight="bold">GND</text>
+      <!-- D32 -->
+      <rect x="-7" y="45" width="14" height="14" rx="2" fill="url(#gold-pad)"/><circle cx="0" cy="52" r="3" fill="#111"/>
+      <text x="14" y="56" fill="#f1fa8c" font-size="12" font-weight="bold">D32 (SCK)</text>
+      <!-- D33 -->
+      <rect x="-7" y="71" width="14" height="14" rx="2" fill="url(#gold-pad)"/><circle cx="0" cy="78" r="3" fill="#111"/>
+      <text x="14" y="82" fill="#8be9fd" font-size="12" font-weight="bold">D33 (WS)</text>
+      <!-- D34 -->
+      <rect x="-7" y="97" width="14" height="14" rx="2" fill="url(#gold-pad)"/><circle cx="0" cy="104" r="3" fill="#111"/>
+      <text x="14" y="108" fill="#50fa7b" font-size="12" font-weight="bold">D34 (SD)</text>
+      <!-- D27 -->
+      <rect x="-7" y="123" width="14" height="14" rx="2" fill="url(#gold-pad)"/><circle cx="0" cy="130" r="3" fill="#111"/>
+      <text x="14" y="134" fill="#bd93f9" font-size="12" font-weight="bold">D27 (LOW)</text>
+
+      <!-- Unused decorative pins -->
+      <rect x="-7" y="155" width="14" height="14" rx="2" fill="url(#gold-pad)" opacity="0.35"/>
+      <rect x="-7" y="181" width="14" height="14" rx="2" fill="url(#gold-pad)" opacity="0.35"/>
+      <rect x="-7" y="207" width="14" height="14" rx="2" fill="url(#gold-pad)" opacity="0.35"/>
+    </g>
+
+    <!-- Right Header Pins -->
+    <g transform="translate(212, 103)">
+      <!-- D25 (DAC1) -->
+      <rect x="-7" y="-7" width="14" height="14" rx="2" fill="url(#gold-pad)"/><circle cx="0" cy="0" r="3" fill="#111"/>
+      <text x="-14" y="4" fill="#ffb86c" font-size="12" font-weight="bold" text-anchor="end">D25 (DAC)</text>
+
+      <!-- Unused decorative pins -->
+      <rect x="-7" y="25" width="14" height="14" rx="2" fill="url(#gold-pad)" opacity="0.35"/>
+      <rect x="-7" y="55" width="14" height="14" rx="2" fill="url(#gold-pad)" opacity="0.35"/>
+      <rect x="-7" y="85" width="14" height="14" rx="2" fill="url(#gold-pad)" opacity="0.35"/>
+
+      <!-- VIN (5V) -->
+      <rect x="-7" y="133" width="14" height="14" rx="2" fill="url(#gold-pad)"/><circle cx="0" cy="140" r="3" fill="#111"/>
+      <text x="-14" y="144" fill="#ff5555" font-size="12" font-weight="bold" text-anchor="end">VIN (5V)</text>
+
+      <!-- GND -->
+      <rect x="-7" y="193" width="14" height="14" rx="2" fill="url(#gold-pad)"/><circle cx="0" cy="200" r="3" fill="#111"/>
+      <text x="-14" y="204" fill="#cccccc" font-size="12" font-weight="bold" text-anchor="end">GND</text>
+    </g>
+  </g>
+
+  <!-- ========================================================= -->
+  <!-- 3. MINI BREADBOARD POWER HUB + 1000uF RADIAL CAPACITOR    -->
+  <!-- ========================================================= -->
+  <g filter="url(#shadow)" transform="translate(650, 290)">
+    <!-- White Breadboard Body -->
+    <rect x="0" y="0" width="145" height="165" rx="8" fill="#f0f2f5" stroke="#c5cad3" stroke-width="2"/>
+    <text x="72" y="20" fill="#333" font-size="11" font-weight="bold" text-anchor="middle">BREADBOARD HUB</text>
+
+    <!-- Red (+) Rail Strip -->
+    <line x1="18" y1="45" x2="127" y2="45" stroke="#e63946" stroke-width="2"/>
+    <text x="12" y="49" fill="#e63946" font-size="12" font-weight="bold">+</text>
+    <!-- 5V Tie Holes -->
+    <rect x="25" y="55" width="8" height="8" fill="#222"/>
+    <rect x="48" y="55" width="8" height="8" fill="#222"/>
+    <rect x="71" y="55" width="8" height="8" fill="#222"/>
+    <rect x="94" y="55" width="8" height="8" fill="#222"/>
+    <rect x="117" y="55" width="8" height="8" fill="#222"/>
+
+    <!-- Blue (-) Rail Strip -->
+    <line x1="18" y1="138" x2="127" y2="138" stroke="#1d3557" stroke-width="2"/>
+    <text x="12" y="142" fill="#1d3557" font-size="14" font-weight="bold">-</text>
+    <!-- GND Tie Holes -->
+    <rect x="25" y="115" width="8" height="8" fill="#222"/>
+    <rect x="48" y="115" width="8" height="8" fill="#222"/>
+    <rect x="71" y="115" width="8" height="8" fill="#222"/>
+    <rect x="94" y="115" width="8" height="8" fill="#222"/>
+    <rect x="117" y="115" width="8" height="8" fill="#222"/>
+
+    <!-- 1000uF Electrolytic Capacitor (3D Cylinder + Leads) -->
+    <!-- Metal Leads going into Breadboard holes (x=75) -->
+    <path d="M 60 220 L 52 59" fill="none" stroke="#999" stroke-width="3"/>
+    <path d="M 86 220 L 75 119" fill="none" stroke="#999" stroke-width="3"/>
+
+    <!-- Capacitor Cylinder Body -->
+    <g transform="translate(36, 205)">
+      <rect x="0" y="0" width="74" height="105" rx="8" fill="url(#cap-body)" stroke="#0d1b33" stroke-width="2"/>
+      <!-- Aluminum Top Vent Cap -->
+      <ellipse cx="37" cy="4" rx="35" ry="6" fill="url(#tin-shield)" stroke="#555" stroke-width="1"/>
+      <!-- Negative (-) Polarity Stripe Signs -->
+      <text x="64" y="28" fill="#222" font-size="16" font-weight="bold" text-anchor="middle">-</text>
+      <text x="64" y="58" fill="#222" font-size="16" font-weight="middle" text-anchor="middle">-</text>
+      <text x="64" y="88" fill="#222" font-size="16" font-weight="bold" text-anchor="middle">-</text>
+      <!-- Positive (+) Label -->
+      <text x="16" y="28" fill="#ffccd5" font-size="15" font-weight="bold" text-anchor="middle">+</text>
+      <!-- Capacitor Value Text -->
+      <text x="28" y="55" fill="#ffffff" font-size="13" font-weight="bold" text-anchor="middle">1000µF</text>
+      <text x="28" y="72" fill="#a8dadc" font-size="11" text-anchor="middle">16V</text>
+    </g>
+  </g>
+
+  <!-- ========================================================= -->
+  <!-- 4. PAM8403 GREEN PCB STEREO AMPLIFIER MODULE              -->
+  <!-- ========================================================= -->
+  <g filter="url(#shadow)" transform="translate(855, 100)">
+    <!-- Green Solder-Mask PCB -->
+    <rect x="0" y="0" width="205" height="225" rx="8" fill="#0f5c2e" stroke="#1b8a47" stroke-width="2.5"/>
+    <rect x="6" y="6" width="193" height="213" rx="5" fill="none" stroke="#ffffff" stroke-opacity="0.25" stroke-width="1"/>
+
+    <!-- Silkscreen Title -->
+    <text x="102" y="28" fill="#ffffff" font-size="15" font-weight="bold" text-anchor="middle">PAM8403</text>
+    <text x="102" y="44" fill="#a7f3d0" font-size="10" text-anchor="middle">3W CLASS-D AMP</text>
+
+    <!-- PAM8403 SOIC-16 IC Chip in Center -->
+    <g transform="translate(68, 72)">
+      <!-- IC Metal Legs -->
+      <rect x="-8" y="6" width="8" height="4" fill="url(#tin-shield)"/>
+      <rect x="-8" y="16" width="8" height="4" fill="url(#tin-shield)"/>
+      <rect x="-8" y="26" width="8" height="4" fill="url(#tin-shield)"/>
+      <rect x="-8" y="36" width="8" height="4" fill="url(#tin-shield)"/>
+      <rect x="-8" y="46" width="8" height="4" fill="url(#tin-shield)"/>
+      <rect x="-8" y="56" width="8" height="4" fill="url(#tin-shield)"/>
+
+      <rect x="68" y="6" width="8" height="4" fill="url(#tin-shield)"/>
+      <rect x="68" y="16" width="8" height="4" fill="url(#tin-shield)"/>
+      <rect x="68" y="26" width="8" height="4" fill="url(#tin-shield)"/>
+      <rect x="68" y="36" width="8" height="4" fill="url(#tin-shield)"/>
+      <rect x="68" y="46" width="8" height="4" fill="url(#tin-shield)"/>
+      <rect x="68" y="56" width="8" height="4" fill="url(#tin-shield)"/>
+
+      <!-- Black IC Package -->
+      <rect x="0" y="0" width="68" height="68" rx="3" fill="#181818" stroke="#444" stroke-width="1"/>
+      <circle cx="10" cy="10" r="3" fill="#555"/>
+      <text x="34" y="32" fill="#ccc" font-size="10" font-weight="bold" text-anchor="middle">PAM8403</text>
+      <text x="34" y="46" fill="#777" font-size="8" text-anchor="middle">CLASS-D</text>
+    </g>
+
+    <!-- SMD Components on PAM8403 -->
+    <rect x="82" y="155" width="16" height="8" fill="#c28e00" stroke="#eee" stroke-width="1"/>
+    <rect x="108" y="155" width="16" height="8" fill="#c28e00" stroke="#eee" stroke-width="1"/>
+
+    <!-- Left Input & Power Pads -->
+    <!-- L Input -->
+    <circle cx="20" cy="98" r="7" fill="url(#gold-pad)"/><circle cx="20" cy="98" r="3" fill="#111"/>
+    <text x="34" y="102" fill="#ffb86c" font-size="12" font-weight="bold">L_IN</text>
+
+    <!-- 5V (+) -->
+    <circle cx="20" cy="155" r="7" fill="url(#gold-pad)"/><circle cx="20" cy="155" r="3" fill="#111"/>
+    <text x="34" y="159" fill="#ff8fa3" font-size="12" font-weight="bold">5V (+)</text>
+
+    <!-- GND (-) -->
+    <circle cx="20" cy="190" r="7" fill="url(#gold-pad)"/><circle cx="20" cy="190" r="3" fill="#111"/>
+    <text x="34" y="194" fill="#e2e8f0" font-size="12" font-weight="bold">GND (-)</text>
+
+    <!-- Bottom Speaker Output Pads -->
+    <circle cx="65" cy="205" r="7" fill="url(#gold-pad)"/><circle cx="65" cy="205" r="3" fill="#111"/>
+    <text x="65" y="190" fill="#50fa7b" font-size="12" font-weight="bold" text-anchor="middle">L+</text>
+
+    <circle cx="140" cy="205" r="7" fill="url(#gold-pad)"/><circle cx="140" cy="205" r="3" fill="#111"/>
+    <text x="140" y="190" fill="#8be9fd" font-size="12" font-weight="bold" text-anchor="middle">L-</text>
+  </g>
+
+  <!-- ========================================================= -->
+  <!-- 5. REALISTIC 4-8 OHM 3W SPEAKER CONE                      -->
+  <!-- ========================================================= -->
+  <g filter="url(#shadow)" transform="translate(855, 390)">
+    <!-- Speaker Metal Frame -->
+    <circle cx="102" cy="115" r="98" fill="#2b2d33" stroke="#555" stroke-width="3"/>
+    <!-- Speaker Cone & Rubber Surround -->
+    <circle cx="102" cy="115" r="86" fill="url(#speaker-cone)"/>
+    <!-- Inner Dust Cap -->
+    <circle cx="102" cy="115" r="32" fill="#181818" stroke="#444" stroke-width="1.5"/>
+    <path d="M 85 103 A 22 22 0 0 1 118 103" fill="none" stroke="#666" stroke-width="2" stroke-linecap="round"/>
+
+    <!-- Solder Terminals at Top of Speaker -->
+    <rect x="57" y="15" width="16" height="10" rx="2" fill="url(#gold-pad)" stroke="#333"/>
+    <text x="48" y="25" fill="#50fa7b" font-size="14" font-weight="bold" text-anchor="end">+</text>
+
+    <rect x="132" y="15" width="16" height="10" rx="2" fill="url(#gold-pad)" stroke="#333"/>
+    <text x="158" y="25" fill="#8be9fd" font-size="16" font-weight="bold">-</text>
+
+    <!-- Speaker Label -->
+    <text x="102" y="172" fill="#e2e8f0" font-size="13" font-weight="bold" text-anchor="middle">4–8Ω  3W</text>
+    <text x="102" y="188" fill="#50fa7b" font-size="11" text-anchor="middle">SPEAKER</text>
+  </g>
+
+  <!-- ========================================================= -->
+  <!-- 6. COLOR-CODED JUMPER WIRES (With Smooth Beziers)         -->
+  <!-- ========================================================= -->
+  <g filter="url(#wire-shadow)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <!-- INMP441 to ESP32 Left Header (y = 198, 224, 250, 276, 302, 328) -->
+    <!-- VDD -> 3V3 (Red) -->
+    <path d="M 215 198 L 378 198" stroke="#ff5555" stroke-width="3.5"/>
+    <!-- GND -> GND (Grey) -->
+    <path d="M 215 224 L 378 224" stroke="#adb5bd" stroke-width="3.5"/>
+    <!-- SCK -> D32 (Yellow) -->
+    <path d="M 215 250 L 378 250" stroke="#f1fa8c" stroke-width="3.5"/>
+    <!-- WS  -> D33 (Cyan) -->
+    <path d="M 215 276 L 378 276" stroke="#8be9fd" stroke-width="3.5"/>
+    <!-- SD  -> D34 (Green) -->
+    <path d="M 215 302 L 378 302" stroke="#50fa7b" stroke-width="3.5"/>
+    <!-- L/R -> D27 (Purple) -->
+    <path d="M 215 328 L 378 328" stroke="#bd93f9" stroke-width="3.5"/>
+
+    <!-- ESP32 D25 (DAC) -> PAM8403 L_IN (Orange Audio Signal Wire) -->
+    <path d="M 572 198 L 875 198" stroke="#ffb86c" stroke-width="4"/>
+    <text x="723" y="190" fill="#ffb86c" font-size="12" font-weight="bold" text-anchor="middle">Analog Audio Out (GPIO 25)</text>
+
+    <!-- ESP32 VIN (5V) -> Breadboard (+) Rail (x=679, y=349) -->
+    <path d="M 572 338 L 625 338 L 625 349 L 679 349" stroke="#ff3333" stroke-width="4"/>
+
+    <!-- Breadboard (+) Rail (x=748, y=349) -> PAM8403 5V (+) (x=875, y=255) -->
+    <path d="M 748 349 L 815 349 L 815 255 L 875 255" stroke="#ff3333" stroke-width="4"/>
+
+    <!-- ESP32 GND -> Breadboard (-) Rail (x=679, y=409) -->
+    <path d="M 572 398 L 615 398 L 615 409 L 679 409" stroke="#adb5bd" stroke-width="4"/>
+
+    <!-- Breadboard (-) Rail (x=771, y=409) -> PAM8403 GND (-) (x=875, y=290) -->
+    <path d="M 771 409 L 832 409 L 832 290 L 875 290" stroke="#adb5bd" stroke-width="4"/>
+
+    <!-- PAM8403 L+ / L- -> Speaker Terminals -->
+    <path d="M 920 305 L 920 408" stroke="#50fa7b" stroke-width="4"/>
+    <path d="M 995 305 L 995 408" stroke="#8be9fd" stroke-width="4"/>
+  </g>
+</svg>
